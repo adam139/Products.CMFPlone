@@ -46683,7 +46683,7 @@ define('text',['module'], function (module) {
 define('text!mockup-patterns-tinymce-url/templates/link.xml',[],function () { return '<div>\n  <div class="linkModal">\n    <h1><%- insertHeading %></h1>\n    <% if(upload){ %>\n    <p class="info">Specify the object to link to. It can be on this site already ("Internal"), an object you upload ("Upload"), from an external site ("External"), an email address ("Email"), or an anchor on this page ("Anchor").</p>\n    <% } %>\n\n    <div class="linkTypes pat-autotoc autotabs"\n         data-pat-autotoc="section:fieldset;levels:legend;IDPrefix:tinymce-autotoc-">\n\n      <fieldset class="linkType internal" data-linkType="internal">\n        <legend id="tinylink-internal">Internal</legend>\n        <div>\n          <div class="form-group main">\n            <!-- this gives the name to the "linkType" -->\n            <input type="text" name="internal" />\n          </div>\n        </div>\n      </fieldset>\n\n      <% if(upload){ %>\n      <fieldset class="linkType upload" data-linkType="upload">\n        <legend id="tinylink-upload">Upload</legend>\n        <div class="uploadify-me"></div>\n      </fieldset>\n      <% } %>\n\n      <fieldset class="linkType external" data-linkType="external">\n        <legend id="tinylink-external">External</legend>\n        <div class="form-group main">\n          <label for="external"><%- externalText %></label>\n          <input type="text" name="external" />\n        </div>\n      </fieldset>\n\n      <fieldset class="linkType email" data-linkType="email">\n        <legend id="tinylink-email">Email</legend>\n        <div class="form-inline">\n          <div class="form-group main">\n            <label><%- emailText %></label>\n            <input type="text" name="email" />\n          </div>\n          <div class="form-group">\n            <label><%- subjectText %></label>\n            <input type="text" name="subject" />\n          </div>\n        </div>\n      </fieldset>\n\n      <fieldset class="linkType anchor" data-linkType="anchor">\n        <legend id="tinylink-anchor">Anchor</legend>\n        <div>\n          <div class="form-group main">\n            <label>Select an anchor</label>\n            <div class="input-wrapper">\n              <select name="anchor" class="pat-select2" data-pat-select2="width:500px" />\n            </div>\n          </div>\n        </div>\n      </fieldset>\n\n    </div><!-- / tabs -->\n\n    <div class="common-controls">\n      <div class="form-group">\n        <label>Target</label>\n        <select name="target">\n          <% _.each(targetList, function(target){ %>\n            <option value="<%- target.value %>"><%- target.text %></option>\n          <% }); %>\n        </select>\n      </div>\n      <div class="form-group">\n        <label><%- titleText %></label>\n        <input type="text" name="title" />\n      </div>\n    </div>\n\n    <input type="submit" class="plone-btn" name="cancel" value="<%- cancelBtn %>" />\n    <input type="submit" class="plone-btn plone-btn-primary context" name="insert" value="<%- insertBtn %>" />\n  </div>\n</div>\n';});
 
 
-define('text!mockup-patterns-tinymce-url/templates/image.xml',[],function () { return '<div>\n  <div class="linkModal">\n    <h1><%- insertHeading %></h1>\n    <% if(_.contains(linkTypes, \'uploadImage\')){ %>\n    <p class="info">Specify an image. It can be on this site already ("Internal Image"), an image you upload ("Upload"), or from an external site ("External Image").</p>\n    <% } %>\n\n    <div class="linkTypes pat-autotoc autotabs"\n         data-pat-autotoc="section:fieldset;levels:legend;IDPrefix:tinymce-autotoc-">\n\n        <% if(_.contains(linkTypes, \'image\')){ %>\n      <fieldset class="linkType image" data-linkType="image">\n        <legend id="tinylink-image">Internal Image</legend>\n        <div class="form-inline">\n          <div class="form-group main">\n            <input type="text" name="image" />\n          </div>\n          <div class="form-group scale">\n            <label><%- scaleText %></label>\n            <select name="scale">\n              <option value="">Original</option>\n                <% _.each(scales, function(scale){ %>\n                  <option value="<%- scale.part %>" <% if(scale.name === options.defaultScale){ %>selected<% } %> >\n                    <%- scale.label %>\n                  </option>\n                <% }); %>\n            </select>\n          </div>\n        </div>\n      </fieldset>\n        <% } %>\n\n      <% if(_.contains(linkTypes, \'uploadImage\')){ %>\n      <fieldset class="linkType uploadImage" data-linkType="uploadImage">\n        <legend id="tinylink-uploadImage">Upload</legend>\n        <div class="uploadify-me"></div>\n      </fieldset>\n      <% } %>\n\n      <% if(_.contains(linkTypes, \'externalImage\')){ %>\n      <fieldset class="linkType externalImage" data-linkType="externalImage">\n        <legend id="tinylink-externalImage">External Image</legend>\n        <div>\n          <div class="form-group main">\n            <label><%- externalImageText %></label>\n            <input type="text" name="externalImage" />\n          </div>\n        </div>\n      </fieldset>\n      <% } %>\n\n    </div><!-- / tabs -->\n\n    <div class="common-controls">\n      <div class="form-group title">\n        <label><%- titleText %></label>\n        <input type="text" name="title" />\n      </div>\n      <div class="form-group text">\n        <label><%- altText %></label>\n        <input type="text" name="alt" />\n      </div>\n      <div class="form-group align">\n        <label><%- imageAlignText %></label>\n        <select name="align">\n          <% _.each([\'inline\', \'right\', \'left\'], function(align){ %>\n              <option value="<%- align %>">\n              <%- align.charAt(0).toUpperCase() + align.slice(1) %>\n              </option>\n          <% }); %>\n        <select>\n      </div>\n    </div>\n\n    <input type="submit" class="plone-btn" name="cancel" value="<%- cancelBtn %>" />\n    <input type="submit" class="plone-btn plone-btn-primary context" name="insert" value="<%- insertBtn %>" />\n\n  </div>\n</div>\n';});
+define('text!mockup-patterns-tinymce-url/templates/image.xml',[],function () { return '<div>\n  <div class="linkModal">\n    <h1><%- insertHeading %></h1>\n    <% if(_.contains(linkTypes, \'uploadImage\')){ %>\n    <p class="info">Specify an image. It can be on this site already ("Internal Image"), an image you upload ("Upload"), or from an external site ("External Image").</p>\n    <% } %>\n\n    <div class="linkTypes pat-autotoc autotabs"\n         data-pat-autotoc="section:fieldset;levels:legend;IDPrefix:tinymce-autotoc-">\n\n        <% if(_.contains(linkTypes, \'image\')){ %>\n      <fieldset class="linkType image" data-linkType="image">\n        <legend id="tinylink-image">Internal Image</legend>\n        <div class="form-inline">\n          <div class="form-group main">\n            <input type="text" name="image" />\n          </div>\n          <div class="form-group scale">\n            <label><%- scaleText %></label>\n            <select name="scale">\n              <option value="">Original</option>\n                <% _.each(imageScales, function(scale){ %>\n                  <option value="<%- scale.value %>" <% if(scale.value === options.defaultScale){ %>selected<% } %> >\n                    <%- scale.title %>\n                  </option>\n                <% }); %>\n            </select>\n          </div>\n        </div>\n      </fieldset>\n        <% } %>\n\n      <% if(_.contains(linkTypes, \'uploadImage\')){ %>\n      <fieldset class="linkType uploadImage" data-linkType="uploadImage">\n        <legend id="tinylink-uploadImage">Upload</legend>\n        <div class="uploadify-me"></div>\n      </fieldset>\n      <% } %>\n\n      <% if(_.contains(linkTypes, \'externalImage\')){ %>\n      <fieldset class="linkType externalImage" data-linkType="externalImage">\n        <legend id="tinylink-externalImage">External Image</legend>\n        <div>\n          <div class="form-group main">\n            <label><%- externalImageText %></label>\n            <input type="text" name="externalImage" />\n          </div>\n        </div>\n      </fieldset>\n      <% } %>\n\n    </div><!-- / tabs -->\n\n    <div class="common-controls">\n      <div class="form-group title">\n        <label><%- titleText %></label>\n        <input type="text" name="title" />\n      </div>\n      <div class="form-group text">\n        <label><%- altText %></label>\n        <input type="text" name="alt" />\n      </div>\n      <div class="form-group align">\n        <label><%- imageAlignText %></label>\n        <select name="align">\n          <% _.each([\'inline\', \'right\', \'left\'], function(align){ %>\n              <option value="<%- align %>">\n              <%- align.charAt(0).toUpperCase() + align.slice(1) %>\n              </option>\n          <% }); %>\n        <select>\n      </div>\n    </div>\n\n    <input type="submit" class="plone-btn" name="cancel" value="<%- cancelBtn %>" />\n    <input type="submit" class="plone-btn plone-btn-primary context" name="insert" value="<%- insertBtn %>" />\n\n  </div>\n</div>\n';});
 
 define('mockup-ui-url/views/base',[
   'jquery',
@@ -50626,7 +50626,7 @@ define('mockup-patterns-tinymce-url/js/links',[
         altText: this.options.text.alt,
         imageAlignText: this.options.text.imageAlign,
         scaleText: this.options.text.scale,
-        scales: this.options.scales,
+        imageScales: this.options.imageScales,
         cancelBtn: this.options.text.cancelBtn,
         insertBtn: this.options.text.insertBtn
       });
@@ -67665,7 +67665,7 @@ define("tinymce-compat3x", ["tinymce"], function() {
  *    relatedItems(object): Related items pattern options. ({ attributes: ["UID", "Title", "Description", "getURL", "portal_type", "path", "ModificationDate"], batchSize: 20, basePath: "/", vocabularyUrl: null, width: 500, maximumSelectionSize: 1, placeholder: "Search for item on site..." })
  *    upload(object): Upload pattern options. ({ attributes: look at upload pattern for getting the options list })
  *    text(object): Translation strings ({ insertBtn: "Insert", cancelBtn: "Cancel", insertHeading: "Insert link", title: "Title", internal: "Internal", external: "External", email: "Email", anchor: "Anchor", subject: "Subject" image: "Image", imageAlign: "Align", scale: "Size", alt: "Alternative Text", externalImage: "External Image URI"})
- *    scales(string): TODO: is this even used ('Listing (16x16):listing,Icon (32x32):icon,Tile (64x64):tile,Thumb (128x128):thumb,Mini (200x200):mini,Preview (400x400):preview,Large (768x768):large')
+ *    imageScales(string): image scale settings as JSON string for the image dialog.
  *    targetList(array): TODO ([ {text: "Open in this window / frame", value: ""}, {text: "Open in new window", value: "_blank"}, {text: "Open in parent window / frame", value: "_parent"}, {text: "Open in top frame (replaces all frames)", value: "_top"}])
  *    imageTypes(string): TODO ('Image')
  *    folderTypes(string): TODO ('Folder,Plone Site')
@@ -67814,13 +67814,19 @@ define('mockup-patterns-tinymce',[
       prependToUrl: '',
       appendToUrl: '',
       linkAttribute: 'path', // attribute to get link value from data
-      prependToScalePart: '/imagescale/', // some value here is required to be able to parse scales back
+      prependToScalePart: '/imagescale/',
       appendToScalePart: '',
       appendToOriginalScalePart: '',
       defaultScale: 'large',
-      scales: _t('Listing (16x16):listing,Icon (32x32):icon,Tile (64x64):tile,' +
-              'Thumb (128x128):thumb,Mini (200x200):mini,Preview (400x400):preview,' +
-              'Large (768x768):large'),
+      imageScales: [
+        {title: 'Mini', value: 'mini'},
+        {title: 'Thumb', value: 'thumb'},
+        {title: 'Listing', value: 'listing'},
+        {title: 'Preview', value: 'preview'},
+        {title: 'Tile', value: 'tile'},
+        {title: 'Icon', value: 'icon'},
+        {title: 'Large', value: 'large'}
+      ],
       targetList: [
         {text: _t('Open in this window / frame'), value: ''},
         {text: _t('Open in new window'), value: '_blank'},
@@ -67904,16 +67910,9 @@ define('mockup-patterns-tinymce',[
     generateImageUrl: function(data, scale_name) {
       var self = this;
       var url = self.generateUrl(data);
-      if (scale_name !== ''){
-        var part = scale_name;
-        for(var i=0; i<self.options.scales.length; i=i+1){
-          if(self.options.scales[i].name === scale_name){
-            part = self.options.scales[i].part;
-          }
-        }
-        url = (url + self.options.prependToScalePart + part +
-               self.options.appendToScalePart);
-      }else{
+      if (scale_name) {
+        url = url + self.options.prependToScalePart + scale_name + self.options.appendToScalePart;
+      } else {
         url = url + self.options.appendToOriginalScalePart;
       }
       return url;
@@ -67997,6 +67996,9 @@ define('mockup-patterns-tinymce',[
       self.linkModal = self.imageModal = self.uploadModal = self.pasteModal = null;
       // tiny needs an id in order to initialize. Creat it if not set.
       var id = utils.setId(self.$el);
+
+      self.options.imageScales = JSON.parse(self.options.imageScales);
+
       var tinyOptions = self.options.tiny;
       if (self.options.inline === true) {
         self.options.tiny.inline = true;
@@ -68020,19 +68022,10 @@ define('mockup-patterns-tinymce',[
       };
 
       self.initLanguage(function() {
-        if(typeof(self.options.scales) === 'string'){
-          self.options.scales = _.map(self.options.scales.split(','), function(scale){
-            scale = scale.split(':');
-            return {
-              part: scale[1],
-              name: scale[1],
-              label: scale[0]
-            };
-          });
-        }
         if(typeof(self.options.folderTypes) === 'string'){
           self.options.folderTypes = self.options.folderTypes.split(',');
         }
+
         if(typeof(self.options.imageTypes) === 'string'){
           self.options.imageTypes = self.options.imageTypes.split(',');
         }
@@ -73161,7 +73154,7 @@ define('mockup-patterns-structure',[
 
       activeColumnsCookie: 'activeColumns',
 
-      iconSize: 'icon',
+      iconSize: 'thumb',
 
       /*
         As the options operate on a merging basis per new attribute
