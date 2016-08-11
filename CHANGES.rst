@@ -81,6 +81,10 @@ New features:
 
 Bug fixes:
 
+- Provide the image scale settings in TinyMCE image dialog.
+  Needs mockup 2.3.0.
+  [thet]
+
 - Upgrade ``less-plugin-inline-urls`` to ``1.2.0`` to properly handle VML url node values in CSS.
   [thet]
 
